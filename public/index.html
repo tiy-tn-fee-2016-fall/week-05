@@ -6,6 +6,17 @@
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
+  <form class="home-form">
+    <!-- the "for" attribute on a label relates to the "id" atrribute of an input to allow autoselecting -->
+    <label for="home-form-user">Initials</label>
+    <input type="text" class="home-form__input" name="user" placeholder="Initials" id="home-form-user">
+
+    <label for="home-form-bpm">BPM</label>
+    <input type="text" class="home-form__input" name="bpm" placeholder="BPM" id="home-form-bpm">
+
+    <button class="btn btn--submit" type="submit">Submit!</button>
+  </form>
+
   <script src="/app.js" charset="utf-8"></script>
 </body>
 </html>
