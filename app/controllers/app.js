@@ -1,4 +1,6 @@
-export default class AppController {
+import ResultListView from '../views/result-list';
+
+export default class  {
   // The setup for our new instance
   /**
    * appElement: Element : An element wrapping the entire application HTML
@@ -18,11 +20,12 @@ export default class AppController {
       // })
       .then((data) => {
         this.model = data;
-        debugger;
-      });
 
-    // When the data comes back let's set up some views to show that data
-    // Render the views once they are created
+        // Create our result list view and render!
+        const resultView = new ResultListView(this.appElement.querySelector('.results-table__list'), this.model);
+
+        resultView.render();
+      });
 
     // Setup a view to handle our form being submitted
   }
