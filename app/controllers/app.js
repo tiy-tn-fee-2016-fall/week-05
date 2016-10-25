@@ -40,7 +40,7 @@ export default class  {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ user, bpm }),
+      body: JSON.stringify({ user, bpm, time: new Date() }),
     }).then((res) => res.json())
       .then((data) => {
         // Update the controller model to be the old results PLUS the newly submitted one
