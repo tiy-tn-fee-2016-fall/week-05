@@ -12,6 +12,11 @@ export default class  {
   }
 
   start() {
+    // Create an empty result view
+    this.resultView = new ResultListView(this.appElement.querySelector('.results-table__list'), this.model);
+    // Setup a view to handle our form being submitted
+    this.formView = new FormView(this.appElement.querySelector('.home-form'), this);
+
     // Grab our data from the API
     fetch('http://tiny-tn.herokuapp.com/collections/rt-bpm')
       .then((res) => res.json())
@@ -21,15 +26,12 @@ export default class  {
       // })
       .then((data) => {
         this.model = data;
+        // Update the model backing the result list
+        this.resultView.model = this.model;
 
-        // Create our result list view and render!
-        const resultView = new ResultListView(this.appElement.querySelector('.results-table__list'), this.model);
-
-        resultView.render();
+        // Tell the result list to re-render
+        this.resultView.render();
       });
-
-    // Setup a view to handle our form being submitted
-    this.formView = new FormView(this.appElement.querySelector('.home-form'), this);
   }
 
   logHeartrate(user, bpm) {
@@ -41,7 +43,15 @@ export default class  {
       body: JSON.stringify({ user, bpm }),
     }).then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // Update the controller model to be the old results PLUS the newly submitted one
+        // The "..." or spread operator pulls out all of the items from an array in order
+        this.model = [data, ...this.model];
+
+        // The resultView needs to be informed of the model change
+        this.resultView.model = this.model;
+
+        // Now that the model has changed, our resultView should re-render
+        this.resultView.render();
       });
   }
 }

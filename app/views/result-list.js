@@ -27,6 +27,8 @@ export default class ResultListView {
   }
 
   render() {
+    this.el.innerHTML = '';
+
     // Loop through our model
     this.model.forEach((result) => {
       // Create a new result item view
