@@ -1,4 +1,5 @@
 import ResultListView from '../views/result-list';
+import FormView from '../views/form-view';
 
 export default class  {
   // The setup for our new instance
@@ -28,5 +29,6 @@ export default class  {
       });
 
     // Setup a view to handle our form being submitted
+    this.formView = new FormView(this.appElement.querySelector('.home-form'));
   }
 }
