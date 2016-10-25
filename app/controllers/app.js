@@ -29,6 +29,19 @@ export default class  {
       });
 
     // Setup a view to handle our form being submitted
-    this.formView = new FormView(this.appElement.querySelector('.home-form'));
+    this.formView = new FormView(this.appElement.querySelector('.home-form'), this);
+  }
+
+  logHeartrate(user, bpm) {
+    fetch('http://tiny-tn.herokuapp.com/collections/rt-bpm', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user, bpm }),
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   }
 }
