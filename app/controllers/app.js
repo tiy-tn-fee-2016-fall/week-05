@@ -1,4 +1,5 @@
 import ResultListView from '../views/result-list';
+import StatsList from '../views/stats-list';
 import FormView from '../views/form-view';
 
 export default class  {
@@ -16,6 +17,8 @@ export default class  {
     this.resultView = new ResultListView(this.appElement.querySelector('.results-table__list'), this.model);
     // Setup a view to handle our form being submitted
     this.formView = new FormView(this.appElement.querySelector('.home-form'), this);
+    // Setup a view for stats
+    this.statsView = new StatsList(this.appElement.querySelector('.info'), this.model, this);
 
     // Grab our data from the API
     fetch('http://tiny-tn.herokuapp.com/collections/rt-bpm')
@@ -28,9 +31,11 @@ export default class  {
         this.model = data;
         // Update the model backing the result list
         this.resultView.model = this.model;
+        this.statsView.model = this.model;
 
         // Tell the result list to re-render
         this.resultView.render();
+        this.statsView.render();
       });
   }
 
@@ -49,9 +54,11 @@ export default class  {
 
         // The resultView needs to be informed of the model change
         this.resultView.model = this.model;
+        this.statsView.model = this.model;
 
         // Now that the model has changed, our resultView should re-render
         this.resultView.render();
+        this.statsView.render();
       });
   }
 }
