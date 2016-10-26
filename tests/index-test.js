@@ -30,3 +30,50 @@ test('find the maximum', (assert) => {
 
   assert.equal(max, 1000);
 });
+
+const getInitials = (user) => {
+  return user.initials;
+};
+
+test('it finds initials for users', (assert) => {
+  const users = [
+    { initials: 'clay', bpm: 90 },
+    { initials: 'bob', bpm: 120 },
+    { initials: 'ryan', bpm: 120 },
+  ];
+
+  // Same as the map function below
+  // let names = [];
+  //
+  // users.forEach((user) => {
+  //   names = [...names, getInitials(user)];
+  // });
+
+  const names = users.map(getInitials);
+
+  assert.deepEqual(names, ['clay', 'bob', 'ryan']);
+});
+
+const isFirstOccurance = (current, index, arr) => {
+  return arr.indexOf(current) === index;
+};
+
+test('it checks if first occurance', (assert) => {
+  const people = ['ryan', 'ryan', 'bob'];
+
+  assert.equal(isFirstOccurance('ryan', 0, people), true);
+  assert.equal(isFirstOccurance('bob', 2, people), true);
+  assert.equal(isFirstOccurance('ryan', 1, people), false);
+
+  // const unique = people.filter(isFirstOccurance);
+
+  let unique = [];
+
+  people.forEach((item, index, arr) => {
+    if (isFirstOccurance(item, index, arr)) {
+      unique = [...unique, item];
+    }
+  });
+
+  assert.deepEqual(unique, ['ryan', 'bob']);
+});
