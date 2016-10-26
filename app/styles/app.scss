@@ -4,3 +4,40 @@
 // $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 @import 'font-awesome/scss/font-awesome';
 @import 'box-sizing';
+
+.results-table {
+  width: 100%;
+
+  border: 0.1rem #777 solid;
+  border-radius: 0.4rem;
+  font-family: sans-serif;
+  overflow: hidden;
+
+  thead {
+    background: #2b5c75;
+    color: #eee;
+  }
+
+  td, th {
+    padding: 0.4rem;
+
+    font-weight: normal;
+  }
+
+  th + th {
+    border-left: 0.1rem rgba(#eee, 0.4) solid;
+  }
+
+  td {
+    border-top: 0.1rem #777 solid;
+    border-left: 0.1rem #777 solid;
+
+    &:first-of-type {
+      border-left: 0;
+    }
+  }
+
+  tr:nth-of-type(even) {
+    background: rgba(#aaa, 0.2);
+  }
+}
