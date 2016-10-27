@@ -11,23 +11,15 @@
   <div class="app">
     <div class="app__sidebar">
       <ul class="name-list">
-        <li class="name-list__item">
-          <a href="#" class="name-list__link">Bulbasaur</a>
-        </li>
-
-        <li class="name-list__item name-list__item--active">
-          <a href="#" class="name-list__link">Bulbasaur</a>
-        </li>
-
-        <li class="name-list__item">
-          <a href="#" class="name-list__link">Bulbasaur</a>
+        <li class="name-list__item" v-for="x in pokemon">
+          <a href="#" class="name-list__link">{{ x }}</a>
         </li>
       </ul>
     </div>
 
     <div class="app__main">
       <figure class="pokemon-data">
-        <h2 class="pokemon-data__name">Bulbasaur</h2>
+        <h2 class="pokemon-data__name">{{ name }}</h2>
 
         <ul class="pokemon-data__stats">
           <li class="pokemon-data__stats-item">
