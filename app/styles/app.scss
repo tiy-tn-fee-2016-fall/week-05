@@ -1,6 +1,27 @@
 // @import 'yoga-sass/assets/yoga';
 // @import 'normalize-css/normalize';
 
-// $fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
+$fa-font-path: '//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts';
 @import 'font-awesome/scss/font-awesome';
 @import 'box-sizing';
+@import 'reset';
+
+// Colors
+$c-primary: #043340;
+$c-primary-light: #7fbcb4;
+$c-primary-med: #0c6775;
+$c-pop: #59293a;
+$c-pop-light: #c0555d;
+
+$c-white: #dedede;
+$c-gray: desaturate($c-primary-light, 30%);
+
+// Measurements
+$m-gutter: 0.5rem;
+$m-maxwidth: 50rem;
+
+// Media Sizes
+$media-phone: (min-width: 500px);
+
+@import 'components/app';
+@import 'components/stats-bar';

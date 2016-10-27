@@ -1,0 +1,14 @@
+.stats-bar {
+  display: flex;
+  border-radius: 0.4rem;
+
+  background: $c-gray;
+
+  overflow: hidden;
+
+  &__fill {
+    padding: 0.2rem;
+    background: $c-pop-light;
+    color: $c-white;
+  }
+}

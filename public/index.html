@@ -3,9 +3,61 @@
 <head>
   <meta charset="utf-8">
   <title>notes</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
   <link rel="stylesheet" href="/app.css">
 </head>
 <body>
+  <div class="app">
+    <div class="app__sidebar">
+      <ul class="name-list">
+        <li class="name-list__item">
+          <a href="#" class="name-list__link">Bulbasaur</a>
+        </li>
+
+        <li class="name-list__item name-list__item--active">
+          <a href="#" class="name-list__link">Bulbasaur</a>
+        </li>
+
+        <li class="name-list__item">
+          <a href="#" class="name-list__link">Bulbasaur</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="app__main">
+      <figure class="pokemon-data">
+        <h2 class="pokemon-data__name">Bulbasaur</h2>
+
+        <ul class="pokemon-data__stats">
+          <li class="pokemon-data__stats-item">
+            <span class="stats-label">Health</span>
+
+            <div class="stats-bar">
+              <span class="stats-bar__fill">46</span>
+            </div>
+          </li>
+
+          <li class="pokemon-data__stats-item">
+            <span class="stats-label">Health</span>
+
+            <div class="stats-bar">
+              <span class="stats-bar__fill" style="flex-basis: calc(46 / 150 * 100%);">46</span>
+            </div>
+          </li>
+
+          <li class="pokemon-data__stats-item">
+            <span class="stats-label">Health</span>
+
+            <div class="stats-bar">
+              <span class="stats-bar__fill">46</span>
+            </div>
+          </li>
+        </ul>
+      </figure>
+    </div>
+  </div>
+
   <script src="/app.js" charset="utf-8"></script>
 </body>
 </html>
