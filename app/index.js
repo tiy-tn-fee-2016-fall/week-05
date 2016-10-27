@@ -8,6 +8,7 @@ const app = new Vue({
     return {
       name: '',
       pokemon: null,
+      currentSelection: null,
     };
   },
 
@@ -16,6 +17,18 @@ const app = new Vue({
       .then((r) => r.json())
       .then((data) => {
         this.pokemon = data.results;
+
+        this.choosePokemon(data.results[0]);
       });
+  },
+
+  methods: {
+    choosePokemon(pokemon) {
+      fetch(pokemon.url)
+        .then((r) => r.json())
+        .then((data) => {
+          this.currentSelection = data;
+        });
+    },
   },
 });

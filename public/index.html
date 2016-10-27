@@ -12,37 +12,27 @@
     <div class="app__sidebar">
       <ul class="name-list">
         <li class="name-list__item" v-for="creature in pokemon">
-          <a href="#" class="name-list__link">{{ creature.name }}</a>
+          <a href="#" v-on:click="choosePokemon(creature)" class="name-list__link">{{ creature.name }}</a>
         </li>
       </ul>
     </div>
 
     <div class="app__main">
       <figure class="pokemon-data">
-        <h2 class="pokemon-data__name">{{ name }}</h2>
+        <h2 class="pokemon-data__name">{{ currentSelection.name }}</h2>
+
+        <img v-bind:src="currentSelection.sprites.front_default"
+          v-bind:alt="currentSelection.name" class="sprite">
 
         <ul class="pokemon-data__stats">
-          <li class="pokemon-data__stats-item">
-            <span class="stats-label">Health</span>
+          <li class="pokemon-data__stats-item" v-for="creatureStats in currentSelection.stats">
+            <span class="stats-label">{{ creatureStats.stat.name }}</span>
 
             <div class="stats-bar">
-              <span class="stats-bar__fill">46</span>
-            </div>
-          </li>
-
-          <li class="pokemon-data__stats-item">
-            <span class="stats-label">Health</span>
-
-            <div class="stats-bar">
-              <span class="stats-bar__fill" style="flex-basis: calc(46 / 150 * 100%);">46</span>
-            </div>
-          </li>
-
-          <li class="pokemon-data__stats-item">
-            <span class="stats-label">Health</span>
-
-            <div class="stats-bar">
-              <span class="stats-bar__fill">46</span>
+              <span class="stats-bar__fill"
+                v-bind:style="{flexBasis: creatureStats.base_stat / 150 * 100 + '%'}">
+                {{ creatureStats.base_stat }}
+              </span>
             </div>
           </li>
         </ul>
