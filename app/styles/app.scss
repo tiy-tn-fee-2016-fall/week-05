@@ -25,3 +25,12 @@ $media-phone: (min-width: 500px);
 
 @import 'components/app';
 @import 'components/stats-bar';
+@import 'components/overlay';
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 400ms;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}

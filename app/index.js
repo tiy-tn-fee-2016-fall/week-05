@@ -9,13 +9,16 @@ const app = new Vue({
       name: '',
       pokemon: null,
       currentSelection: null,
+      loading: false,
     };
   },
 
   mounted() {
+    this.loading = true;
     fetch('http://pokeapi.co/api/v2/pokemon')
       .then((r) => r.json())
       .then((data) => {
+        this.loading = false;
         this.pokemon = data.results;
 
         this.choosePokemon(data.results[0]);
@@ -24,9 +27,11 @@ const app = new Vue({
 
   methods: {
     choosePokemon(pokemon) {
+      this.loading = true;
       fetch(pokemon.url)
         .then((r) => r.json())
         .then((data) => {
+          this.loading = false;
           this.currentSelection = data;
         });
     },

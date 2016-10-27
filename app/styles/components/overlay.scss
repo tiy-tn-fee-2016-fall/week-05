@@ -1,0 +1,22 @@
+.overlay {
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  width: 100%;
+  height: 100%;
+  padding: 2 * $m-gutter;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  &__card {
+    padding: $m-gutter;
+    border-radius: 0.4rem;
+    background: $c-white;
+  }
+}
