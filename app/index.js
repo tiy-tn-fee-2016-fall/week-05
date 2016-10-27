@@ -5,7 +5,7 @@ const app = new Vue({
   el: '.app',
 
   data() {
-    return {
+    const model = {
       name: 'Hello from Javascript',
 
       pokemon: [
@@ -15,5 +15,19 @@ const app = new Vue({
         'Squirtle',
       ],
     };
+
+    setTimeout(() => {
+      alert('Charmander is evolving!!!');
+
+      this.pokemon = this.pokemon.map((p) => {
+        if (p === 'Charmander') {
+          return 'Charmeleon';
+        }
+
+        return p;
+      });
+    }, 5000);
+
+    return model;
   },
 });
