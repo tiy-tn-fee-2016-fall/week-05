@@ -2,6 +2,22 @@ const isFirstOccurance = (current, index, arr) => {
   return arr.indexOf(current) === index;
 };
 
+const greater = (a, b) => {
+  if (a > b) {
+    return a;
+  }
+
+  return b;
+};
+
+const lesser = (a, b) => {
+  if (a < b) {
+    return a;
+  }
+
+  return b;
+};
+
 class UserView {
   constructor(model) {
     this.model = model;
@@ -39,5 +55,26 @@ export default class StatsList {
 
       usersList.appendChild(view.el);
     });
+
+    const maxBpm = this.model
+      .map((r) => parseInt(r.bpm))
+      .reduce(greater);
+
+    const minBpm = this.model
+      .map((r) => parseInt(r.bpm))
+      .reduce(lesser);
+
+    this.el.querySelector('.max-heartrate').innerText = `Max: ${maxBpm}`;
+    this.el.querySelector('.min-heartrate').innerText = `Min: ${minBpm}`;
+
+    const add = (a, b) => a + b;
+
+    const sum = this.model
+      .map((r) => parseInt(r.bpm))
+      .reduce(add);
+
+    const avgBpm = sum / this.model.length;
+
+    this.el.querySelector('.avg-heartrate').innerText = `Avg: ${avgBpm}`;
   }
 }
