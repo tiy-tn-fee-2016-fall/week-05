@@ -36,16 +36,9 @@
           v-bind:alt="currentSelection.name" class="sprite">
 
         <ul class="pokemon-data__stats">
-          <li class="pokemon-data__stats-item" v-for="creatureStats in currentSelection.stats">
-            <span class="stats-label">{{ creatureStats.stat.name }}</span>
-
-            <div class="stats-bar">
-              <span class="stats-bar__fill"
-                v-bind:style="{flexBasis: creatureStats.base_stat / 150 * 100 + '%'}">
-                {{ creatureStats.base_stat }}
-              </span>
-            </div>
-          </li>
+          <template v-for="creatureStats in currentSelection.stats">
+            <stat-bar v-bind:info="creatureStats"></stat-bar>
+          </template>
         </ul>
       </figure>
     </div>
